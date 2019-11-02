@@ -43,7 +43,7 @@ def justify_text(text, width):
             line.append(word)
             length += wordlen
         else:
-            yield(apply_spacing(line, width))
+            yield apply_spacing(line, width)
             line = []
             line.append(word)
             length = wordlen
@@ -54,7 +54,7 @@ def justify_text(text, width):
 
     # Handles last line, and single word lines
     if line:
-        yield(apply_spacing(line, width))
+        yield apply_spacing(line, width)
 
 
 def apply_spacing(line, width, prepad=True):
@@ -78,8 +78,8 @@ def apply_spacing(line, width, prepad=True):
 
 def show_justified_text_as_array_lines(justified_text):
     """Show the justified with 'array number' headers."""
-    for i, e in enumerate(justified_text):
-        print(f'Array [{i+1}] = "{e}"')
+    for idx, text in enumerate(justified_text):
+        print(f'Array [{idx+1}] = "{text}"')
 
 
 def main():
@@ -90,7 +90,7 @@ def main():
     else:
         paragraph = """This is a sample text but a complicated problem to be
         solved, so we are adding more text to see that it actually works."""
-        page_width = 20
+        page_width = 14
 
     show_justified_text_as_array_lines(justify_text(paragraph, page_width))
 
